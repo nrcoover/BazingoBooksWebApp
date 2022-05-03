@@ -1,4 +1,5 @@
 ﻿using BazingoBooksWebApp.Data;
+using BazingoBooksWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BazingoBooksWebApp.Controllers
@@ -14,8 +15,8 @@ namespace BazingoBooksWebApp.Controllers
 
         public IActionResult Index()
         {
-            var objCategoryList = _db.Categories.ToList();
-            return View();
+            IEnumerable<Category> objCategoryList = _db.Categories;
+            return View(objCategoryList);
         }
     }
 }
