@@ -75,7 +75,7 @@ namespace BazingoBooksWebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
