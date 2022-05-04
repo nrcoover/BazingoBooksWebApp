@@ -3,10 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-@if(TempData["success"] != null)
-{
-    <h2 class="my-2 text-info">@TempData["success"]</h2>
-}
+<partial name="_Notification" />
 
 <div class="container p-3">
 
