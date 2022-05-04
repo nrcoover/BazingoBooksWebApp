@@ -6,7 +6,8 @@
 			<h2></h2>
 			<hr />
 		</div>
-		<div asp-validation-summary="All"></div>
+		@*Commented out because our inline validations are sufficient, but may want to use again the in future.*@
+		@*<div asp-validation-summary="All"></div>*@
 		<div class="mb-3">
 			<label asp-for="Name"></label>
 			<input asp-for="Name" class="form-control" />
