@@ -1,9 +1,9 @@
 ﻿@model Category
 
-<form method="post">
+<form method="post" asp-action="Edit">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-info">Create Category</h2>
+			<h2 class="text-info">Edit Category</h2>
 			<hr />
 		</div>
 		@*Commented out because our inline validations are sufficient, but may want to use again the in future.*@
@@ -18,7 +18,7 @@
 			<input asp-for="DisplayOrder" class="form-control" />
 			<span asp-validation-for="DisplayOrder" class="text-warning"></span>
 		</div>
-		<button type="submit" class="btn btn-success" style="width:150px">Create</button>
+		<button type="submit" class="btn btn-success" style="width:150px">Update</button>
 		<a asp-controller="Category" asp-action="Index" class="btn btn-info" style="width:150px">
 			Back to List
 		</a>
