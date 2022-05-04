@@ -39,6 +39,7 @@ namespace BazingoBooksWebApp.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Your new Category was created successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -77,6 +78,7 @@ namespace BazingoBooksWebApp.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Your Category was updated successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -112,6 +114,7 @@ namespace BazingoBooksWebApp.Controllers
 
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "Your Category has been deleted!";
             return RedirectToAction("Index");
         }
     }
