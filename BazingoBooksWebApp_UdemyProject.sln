@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazingoBooksWebApp", "BazingoBooksWebApp\BazingoBooksWebApp.csproj", "{08655E29-7D5D-4B9E-B553-980133A46699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BazingoBooksWebApp", "BazingoBooksWebApp\BazingoBooksWebApp.csproj", "{08655E29-7D5D-4B9E-B553-980133A46699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazingoBooks.DataAccess", "BazingoBooks.DataAccess\BazingoBooks.DataAccess.csproj", "{11CB7509-03A9-45C0-B185-37497BA26F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazingoBooks.Models", "BazingoBooks.Models\BazingoBooks.Models.csproj", "{D33A5374-8DE1-4E6B-97A4-AD0DCAA0FFDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazingoBooks.Utility", "BazingoBooks.Utility\BazingoBooks.Utility.csproj", "{53E02C2D-45AB-40E6-A18D-D76BA5AC1F25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{08655E29-7D5D-4B9E-B553-980133A46699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08655E29-7D5D-4B9E-B553-980133A46699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08655E29-7D5D-4B9E-B553-980133A46699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CB7509-03A9-45C0-B185-37497BA26F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CB7509-03A9-45C0-B185-37497BA26F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CB7509-03A9-45C0-B185-37497BA26F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CB7509-03A9-45C0-B185-37497BA26F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33A5374-8DE1-4E6B-97A4-AD0DCAA0FFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33A5374-8DE1-4E6B-97A4-AD0DCAA0FFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33A5374-8DE1-4E6B-97A4-AD0DCAA0FFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33A5374-8DE1-4E6B-97A4-AD0DCAA0FFDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E02C2D-45AB-40E6-A18D-D76BA5AC1F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E02C2D-45AB-40E6-A18D-D76BA5AC1F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E02C2D-45AB-40E6-A18D-D76BA5AC1F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E02C2D-45AB-40E6-A18D-D76BA5AC1F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

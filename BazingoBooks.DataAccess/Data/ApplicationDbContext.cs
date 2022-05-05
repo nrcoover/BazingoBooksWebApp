@@ -1,7 +1,7 @@
-﻿using BazingoBooksWebApp.Models;
+﻿using BazingoBooks.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BazingoBooksWebApp.Data
+namespace BazingoBooks.DataAccess
 {
     public class ApplicationDbContext :DbContext
     {

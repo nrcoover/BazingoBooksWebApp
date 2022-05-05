@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BazingoBooksWebApp.Models
+namespace BazingoBooks.Models
 {
     public class Category
     {

@@ -1,4 +1,4 @@
-using BazingoBooksWebApp.Data;
+using BazingoBooks.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

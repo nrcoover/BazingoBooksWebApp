@@ -1,4 +1,4 @@
-namespace BazingoBooksWebApp.Models
+namespace BazingoBooks.Models
 {
     public class ErrorViewModel
     {

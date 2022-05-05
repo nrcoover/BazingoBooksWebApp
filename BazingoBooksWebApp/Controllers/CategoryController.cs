@@ -1,5 +1,4 @@
-﻿using BazingoBooksWebApp.Data;
-using BazingoBooksWebApp.Models;
+﻿using BazingoBooks.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BazingoBooksWebApp.Controllers
@@ -15,7 +14,7 @@ namespace BazingoBooksWebApp.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Category> objCategoryList = _db.Categories;
+            IEnumerable<BazingoBooks.Models.Category> objCategoryList = _db.Categories;
             return View(objCategoryList);
         }
 
@@ -28,7 +27,7 @@ namespace BazingoBooksWebApp.Controllers
         // Create POST Action Method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Create(BazingoBooks.Models.Category obj)
         {
             if (obj.Name == obj.DisplayOrder.ToString())
             {
@@ -67,7 +66,7 @@ namespace BazingoBooksWebApp.Controllers
         // Edit POST Action Method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category obj)
+        public IActionResult Edit(BazingoBooks.Models.Category obj)
         {
             if (obj.Name == obj.DisplayOrder.ToString())
             {
