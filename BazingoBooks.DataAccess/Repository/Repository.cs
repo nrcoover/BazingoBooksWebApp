@@ -40,7 +40,7 @@ namespace BazingoBooks.DataAccess.Repository
 
         public void Remove(T entity)
         {
-            dbSet.Add(entity);
+            dbSet.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entity)
