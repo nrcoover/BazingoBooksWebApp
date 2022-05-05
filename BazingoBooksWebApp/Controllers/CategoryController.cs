@@ -1,20 +1,21 @@
 ﻿using BazingoBooks.DataAccess;
+using BazingoBooks.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BazingoBooksWebApp.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ICategoryRepository _db;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(ICategoryRepository db)
         {
             _db = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<BazingoBooks.Models.Category> objCategoryList = _db.Categories;
+            IEnumerable<BazingoBooks.Models.Category> objCategoryList = _db.GetAll();
             return View(objCategoryList);
         }
 
@@ -36,8 +37,8 @@ namespace BazingoBooksWebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _db.Add(obj);
+                _db.Save();
                 TempData["success"] = "Your new Category was created successfully";
                 return RedirectToAction("Index");
             }
@@ -51,16 +52,16 @@ namespace BazingoBooksWebApp.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
-            //var categoryFromDbFirst = _db.Categories.FirstOrDefault(u => u.Id == id);
+            //var categoryFromDb = _db.Categories.Find(id);
+            var categoryFromDbFirst = _db.GetFirstOrDefault(u => u.Id == id);
             //var categoryFromDbSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
 
-            if(categoryFromDb == null)
+            if(categoryFromDbFirst == null)
             {
                 return NotFound();
             }
 
-            return View(categoryFromDb);
+            return View(categoryFromDbFirst);
         }
 
         // Edit POST Action Method
@@ -75,8 +76,8 @@ namespace BazingoBooksWebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _db.Update(obj);
+                _db.Save();
                 TempData["success"] = "Your Category was updated successfully";
                 return RedirectToAction("Index");
             }
@@ -90,14 +91,15 @@ namespace BazingoBooksWebApp.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
+            //var categoryFromDb = _db.Categories.Find(id);
+            var categoryFromDbFirst = _db.GetFirstOrDefault(u => u.Id == id);
 
-            if (categoryFromDb == null)
+            if (categoryFromDbFirst == null)
             {
                 return NotFound();
             }
 
-            return View(categoryFromDb);
+            return View(categoryFromDbFirst);
         }
 
         // Delete POST Action Method
@@ -105,14 +107,14 @@ namespace BazingoBooksWebApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _db.Categories.Find(id);
+            var obj = _db.GetFirstOrDefault(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _db.Remove(obj);
+            _db.Save();
             TempData["success"] = "Your Category has been deleted!";
             return RedirectToAction("Index");
         }
