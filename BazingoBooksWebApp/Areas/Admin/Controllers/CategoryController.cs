@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BazingoBooksWebApp.Controllers
 {
+    [Area("Admin")]
+
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
