@@ -1,6 +1,8 @@
 ﻿using BazingoBooks.DataAccess;
 using BazingoBooks.DataAccess.Repository.IRepository;
+using BazingoBooks.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BazingoBooksWebApp.Controllers
 {
@@ -21,48 +23,43 @@ namespace BazingoBooksWebApp.Controllers
             return View(objCoverTypeList);
         }
 
-        // Create GET Action Method
-        public IActionResult Create()
+        // Upsert GET Action Method
+        public IActionResult Upsert(int? id)
         {
-            return View();
+            Product product = new();
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString(),
+                });
+
+            IEnumerable<SelectListItem> CoverTypeList = _unitOfWork.CoverType.GetAll().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString(),
+                });
+
+            if (id == null || id == 0)
+            {
+                // create product
+                ViewBag.CategoryList = CategoryList;
+                ViewData["CoverTypeList"] = CoverTypeList;
+                return View(product);
+            } 
+            else
+            {
+                // update product
+            }
+
+            return View(product);
         }
 
-        // Create POST Action Method
+        // Upsert POST Action Method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(BazingoBooks.Models.CoverType obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.CoverType.Add(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Your new Cover Type was created successfully";
-                return RedirectToAction("Index");
-            }
-            return View(obj);
-        }
-
-        // Edit GET Action Method
-        public IActionResult Edit(int? id)
-        {
-            if(id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var coverTypeFromDbFirst = _unitOfWork.CoverType.GetFirstOrDefault(u => u.Id == id);
-
-            if (coverTypeFromDbFirst == null)
-            {
-                return NotFound();
-            }
-
-            return View(coverTypeFromDbFirst);
-        }
-
-        // Edit POST Action Method
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(BazingoBooks.Models.CoverType obj)
+        public IActionResult Upsert(BazingoBooks.Models.CoverType obj)
         {
             if (ModelState.IsValid)
             {
