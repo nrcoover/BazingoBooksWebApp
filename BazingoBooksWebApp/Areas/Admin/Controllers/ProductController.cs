@@ -60,11 +60,11 @@ namespace BazingoBooksWebApp.Controllers
         // Upsert POST Action Method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(BazingoBooks.Models.CoverType obj)
+        public IActionResult Upsert(ProductVM obj, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.CoverType.Update(obj);
+                //_unitOfWork.CoverType.Update(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Your Cover Type was updated successfully";
                 return RedirectToAction("Index");
