@@ -1,6 +1,7 @@
 ﻿using BazingoBooks.DataAccess;
 using BazingoBooks.DataAccess.Repository.IRepository;
 using BazingoBooks.Models;
+using BazingoBooks.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -26,34 +27,34 @@ namespace BazingoBooksWebApp.Controllers
         // Upsert GET Action Method
         public IActionResult Upsert(int? id)
         {
-            Product product = new();
-            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(
-                u => new SelectListItem
+            ProductVM productVM = new()
+            {
+                Product = new(),
+                CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
                 {
-                    Text = u.Name,
-                    Value = u.Id.ToString(),
-                });
-
-            IEnumerable<SelectListItem> CoverTypeList = _unitOfWork.CoverType.GetAll().Select(
-                u => new SelectListItem
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                CoverTypeList = _unitOfWork.CoverType.GetAll().Select(i => new SelectListItem
                 {
-                    Text = u.Name,
-                    Value = u.Id.ToString(),
-                });
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+            };
 
             if (id == null || id == 0)
             {
                 // create product
-                ViewBag.CategoryList = CategoryList;
-                ViewData["CoverTypeList"] = CoverTypeList;
-                return View(product);
+                //ViewBag.CategoryList = CategoryList;
+                //ViewData["CoverTypeList"] = CoverTypeList;
+                return View(productVM);
             } 
             else
             {
                 // update product
             }
 
-            return View(product);
+            return View(productVM);
         }
 
         // Upsert POST Action Method
